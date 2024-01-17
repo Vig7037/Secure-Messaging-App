@@ -1,6 +1,6 @@
 import random
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import ttk, messagebox
 
 def encrypt_data(data):
     with open("dbms.txt", "w") as f:
@@ -48,17 +48,24 @@ def decrypt_data():
 root = tk.Tk()
 root.title("Data Encryption Program")
 
-# Create and place widgets in the window
-label = tk.Label(root, text="Enter the data you want to encrypt:")
+# Create a style for the widgets
+style = ttk.Style()
+
+# Configure the style for buttons with a colorful theme
+style.configure("TButton", padding=10, font=('Helvetica', 12), foreground="white", background="#4CAF50")
+
+# Create and place widgets in the window with a colorful theme
+label = ttk.Label(root, text="Enter the data you want to encrypt:", foreground="#009688")
 label.pack(pady=10)
 
-data_entry = tk.Entry(root, width=50)
+data_entry = ttk.Entry(root, width=50)
 data_entry.pack(pady=10)
 
-encrypt_button = tk.Button(root, text="Send Message", command=lambda: encrypt_data(data_entry.get()))
+encrypt_button = ttk.Button(root, text="Send Message", command=lambda: encrypt_data(data_entry.get()))
 encrypt_button.pack(pady=10)
 
-decrypt_button = tk.Button(root, text="Take data", command=decrypt_data)
+decrypt_button = ttk.Button(root, text="Take data", command=decrypt_data)
 decrypt_button.pack(pady=10)
 
+# Start the main loop
 root.mainloop()
